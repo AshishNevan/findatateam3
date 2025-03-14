@@ -4,6 +4,8 @@
 
 The FinData SEC Financial Data Pipeline is a comprehensive data engineering solution designed to extract, transform, and analyze financial data from the U.S. Securities and Exchange Commission (SEC). This project automates the collection of corporate financial reports in JSON format, processes them into structured data, and makes them available for analysis through both a data warehouse and interactive visualization tools. The system enables financial analysts, researchers, and investors to easily access standardized financial data for informed decision-making.
 
+Detailed guide available at [**codelabs**](https://codelabs-preview.appspot.com/?file_id=1tOHmsV6Y-T9I_fWOGeXFZ7c8S-rG_hSdUmV2feef4P4#0)
+
 ## Project Scope
 
 - Automated scraping of financial statement data from SEC website for any year and quarter
