@@ -7,5 +7,10 @@ __pycache__/
 target/
 dbt_packages/
 logs/*
+/backend/data
+/backend/exportfiles
+.backend-venv
+exportfiles/*
+.vscode/*
 data/*
 .dbt/
