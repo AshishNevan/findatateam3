@@ -1,5 +1,8 @@
 fastapi[standard]
 python-dotenv
-sqlalchemy==1.4.54
+SQLAlchemy==1.4.54
 snowflake-sqlalchemy
 snowflake-connector-python
+tabulate
+pandas
+marshmallow
