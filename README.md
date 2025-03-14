@@ -82,6 +82,8 @@ findatateam3
 - **Streamlit Dashboard**: [https://findatateam3-ylcxtmn2ragdbygsq5ezgp.streamlit.app](https://findatateam3-ylcxtmn2ragdbygsq5ezgp.streamlit.app)
 - **Airflow Orchestration**: [34.152.46.1:8080](http://34.152.46.1:8080)
 - **FastAPI Backend**: [https://nevchris242-findata-backend.hf.space](https://nevchris242-findata-backend.hf.space)
+- - **GitHub Projects**: [https://github.com/users/AshishNevan/projects/1](https://github.com/users/AshishNevan/projects/1)
+- **Video Demonstration**: [https://www.youtube.com/watch?v=mB7rQbW-oTk](https://www.youtube.com/watch?v=mB7rQbW-oTk)
 
 ## Tech Stack
 
@@ -206,8 +208,6 @@ Trigger the DAG from the Airflow UI
 - **Snowflake**: Query the processed data directly in your Snowflake instance
 - **Streamlit Dashboard**: Visit [https://findatateam3-ylcxtmn2ragdbygsq5ezgp.streamlit.app](https://findatateam3-ylcxtmn2ragdbygsq5ezgp.streamlit.app)
 - **FastAPI**: Access data via [https://nevchris242-findata-backend.hf.space](https://nevchris242-findata-backend.hf.space)
-- **GitHub Projects**: Visit [https://github.com/users/AshishNevan/projects/1](https://github.com/users/AshishNevan/projects/1)
-- **Video Demonstration**: Visit [https://www.youtube.com/watch?v=mB7rQbW-oTk](https://www.youtube.com/watch?v=mB7rQbW-oTk)
 
 ## Project Workflow
 
