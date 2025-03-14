@@ -116,13 +116,24 @@ def plot_data(df, chart_type, title):
 
 def main():
     st.set_page_config(page_title="Financial Analytics Dashboard", layout="wide")
-    st.title("📊 SEC Financial Data Explorer")
+    st.title("📊 FinFusion: SEC Financial Data Explorer")
+    
+    # Project introduction
+    st.markdown("""
+    **Welcome to FinFusion's Analytics Platform**  
+    This dashboard provides insights into SEC financial filings using:
+    - 🗄️ **Snowflake** for data warehousing
+    - 🔄 **Airflow** for pipeline orchestration
+    - 📈 **SEC filings** as primary data source
+    
+    Explore quarterly financial trends, company filings analysis, and industry distributions through interactive visualizations.
+    """)
     
     # Sidebar controls
     with st.sidebar:
         st.header("Filters")
         current_year = datetime.now().year
-        year = st.slider("Select Year", 2010, current_year, current_year)
+        year = st.slider("Select Year (Currently only try for 2023_Q4 which Team 3 was assigned to.)", 2010, current_year, current_year)
         quarter = st.selectbox("Select Quarter", [1, 2, 3, 4], format_func=lambda x: f"Q{x}")
         
         st.divider()
@@ -135,48 +146,52 @@ def main():
     if st.sidebar.button("Generate Report"):
         with st.spinner("Analyzing financial data..."):
             progress_bar = st.progress(0)
+            progress = 0
             status_text = st.empty()
-            try:
-                # Trigger Airflow DAG
-                dag_response = requests.post(
-                    f"{FASTAPI_URL}/airflow/rundag/sec_data_pipeline",
-                    json={"year": year, "quarter": quarter}
-                )
-                if dag_response.status_code != 200:
-                    st.error(f"Pipeline activation failed: {dag_response.text}")
-                    st.stop()
+            # try:
+            #     # Trigger Airflow DAG
+            #     dag_response = requests.post(
+            #         f"{FASTAPI_URL}/airflow/rundag/sec_data_pipeline",
+            #         json={"year": year, "quarter": quarter}
+            #     )
+            #     if dag_response.status_code != 200:
+            #         st.error(f"Pipeline activation failed: {dag_response.text}")
+            #         st.stop()
 
-                # Monitor DAG progress
-                dag_run_id = dag_response.json().get('dag_run_id')
-                progress = 0
-                while progress < 100:
-                    status_response = requests.get(
-                        f"{FASTAPI_URL}/airflow/rundag/sec_data_pipeline/{dag_run_id}"
-                    )
-                    if status_response.status_code != 200:
-                        st.error(f"Status check failed: {status_response.text}")
-                        st.stop()
+            #     # Monitor DAG progress
+            #     dag_run_id = dag_response.json().get('dag_run_id')
+            #     progress = 0
+            #     while progress < 100:
+            #         status_response = requests.get(
+            #             f"{FASTAPI_URL}/airflow/rundag/sec_data_pipeline/{dag_run_id}"
+            #         )
+            #         if status_response.status_code != 200:
+            #             st.error(f"Status check failed: {status_response.text}")
+            #             st.stop()
 
-                    dag_status = status_response.json().get('state', 'running')
-                    if dag_status == 'success':
-                        progress = 100
-                        progress_bar.progress(progress)
-                        status_text.success("Processing complete!")
-                        break
-                    elif dag_status in ['failed', 'error']:
-                        st.error(f"Pipeline failed: {dag_status}")
-                        st.stop()
-                    else:
-                        progress = min(progress + 10, 90)
-                        progress_bar.progress(progress)
-                        status_text.text(f"Status: {dag_status}...")
-                        time.sleep(2)
+            #         dag_status = status_response.json().get('state', 'running')
+            #         if dag_status == 'success':
+            #             progress = 100
+            #             progress_bar.progress(progress)
+            #             status_text.success("Processing complete!")
+            #             break
+            #         elif dag_status in ['failed', 'error']:
+            #             st.error(f"Pipeline failed: {dag_status}")
+            #             st.stop()
+            #         else:
+            #             progress = min(progress + 10, 90)
+            #             progress_bar.progress(progress)
+            #             status_text.text(f"Status: {dag_status}...")
+            #             time.sleep(2)
 
-            except Exception as e:
-                st.error(f"Error triggering pipeline: {str(e)}")
-                st.stop()
+            # except Exception as e:
+            #     st.error(f"Error triggering pipeline: {str(e)}")
+            #     st.stop()
             
             # Fetch and display data
+            progress = min(progress+10, 90)
+            progress_bar.progress(progress)
+            time.sleep(2)
             df = get_data(selected_query, year, quarter)
 
             if not df.empty:
