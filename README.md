@@ -82,7 +82,7 @@ findatateam3
 - **Streamlit Dashboard**: [https://findatateam3-ylcxtmn2ragdbygsq5ezgp.streamlit.app](https://findatateam3-ylcxtmn2ragdbygsq5ezgp.streamlit.app)
 - **Airflow Orchestration**: [34.152.46.1:8080](http://34.152.46.1:8080)
 - **FastAPI Backend**: [https://nevchris242-findata-backend.hf.space](https://nevchris242-findata-backend.hf.space)
-- - **GitHub Projects**: [https://github.com/users/AshishNevan/projects/1](https://github.com/users/AshishNevan/projects/1)
+- **GitHub Projects**: [https://github.com/users/AshishNevan/projects/1](https://github.com/users/AshishNevan/projects/1)
 - **Video Demonstration**: [https://www.youtube.com/watch?v=mB7rQbW-oTk](https://www.youtube.com/watch?v=mB7rQbW-oTk)
 
 ## Tech Stack
