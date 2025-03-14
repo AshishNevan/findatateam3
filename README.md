@@ -19,6 +19,63 @@ Detailed guide available at [**codelabs**](https://codelabs-preview.appspot.com/
 ## Architecture
 <img src="images/assignment2.png" width=800px>
 
+### Project Structure
+```
+├── .env.example
+├── .gitignore
+├── AiUseDisclosure.md
+├── Dockerfile
+├── README.md
+├── backend/
+│   ├── api.py
+│   ├── logs/
+│   ├── requirements.txt
+│   ├── scripts.py
+│   ├── sec_json.py
+│   └── test/
+│       ├── test_sec_json.py
+├── config/
+├── dags/
+│   ├── __init__.py
+│   ├── json_transformation.py
+│   ├── scripts/
+│   │   ├── scrape_sec_data.py
+│   │   └── scrape_sic_codes.py
+│   ├── sec_pipeline.py
+│   ├── sic_codes_pipeline.py
+│   └── snow.py
+├── data/
+├── dbt/
+│   ├── data_pipeline/
+│   │   ├── .gitignore
+│   │   ├── README.md
+│   │   ├── dbt_project.yml
+│   │   ├── macros/
+│   │   │   └── generate_schema_name.sql
+│   │   ├── models/
+│   │   │   ├── marts/
+│   │   │   │   └── cash_flow.sql
+│   │   │   ├── staging/
+│   │   │   │   ├── pre_stage.sql
+│   │   │   │   └── sub_stage.sql
+│   │   ├── seeds/
+│   │   │   └── .gitkeep
+│   │   ├── snapshots/
+│   │   ├── tests/
+│   │   │   └── .gitkeep
+│   │   └── logs/
+├── docker-compose.yaml
+├── frontend/
+│   └── app.py
+├── images/
+├── logs/
+├── plugins/
+├── prototyping/
+│   ├── dbt-chck.py
+│   └── dbt-etl.py
+└── requirements.txt
+```
+
 ## Deployed Services
 
 - **Streamlit Dashboard**: [https://findatateam3-ylcxtmn2ragdbygsq5ezgp.streamlit.app](https://findatateam3-ylcxtmn2ragdbygsq5ezgp.streamlit.app)
@@ -166,3 +223,14 @@ docker compose down
 - **Data Processing Errors**: Check Airflow logs in the UI or in the `logs/` directory
 - **DBT Transformation Failures**: Review logs in `dbt/logs/`
 - **API Access Problems**: Ensure the backend service is running and accessible
+
+## Disclosures
+### Team Member contributions:
+Adwaith Korapati - 33%
+Ashish Nevan Gade- 33%
+Neha Devarapalli- 33%
+
+### AI Usage disclosure
+We have used AI to research candidate tools & their usages, codegen tools were used to autocomplete repeated code blocks and never for the core logic.
+
+
