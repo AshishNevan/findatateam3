@@ -105,19 +105,16 @@ with DAG(
         timeout=60 * 60 * 24,
     )
 
-    load_task = HttpSensor(
+    load_task = HttpOperator(
         task_id="load_task",
         http_conn_id="http_backend_default",
         method="GET",
         endpoint="/json/load",
-        request_params={
-            "method": "GET",
+        data={
             "year": "{{ params.year }}",
             "quarter": "{{ params.quarter }}",
         },
-        response_check=lambda response: response.json()["status"] == "success",
-        poke_interval=30,
-        timeout=60 * 10,
+        response_filter=lambda response: response.json()["status"] == "success",
     )
 
     branch_task = branch_task()
