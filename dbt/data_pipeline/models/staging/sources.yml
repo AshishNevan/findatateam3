@@ -1,0 +1,15 @@
+version: 2
+
+sources:
+  - name: raw
+    database: FINDATA_RAW
+    schema: STAGING_{{ var('year') }}_Q{{ var('quarter') }}
+    tables:
+      - name: raw_sub
+        description: "Raw SUB table"
+      - name: raw_tag
+        description: "Raw TAG table"
+      - name: raw_num
+        description: "Raw NUM table"
+      - name: raw_pre
+        description: "Raw PRE table"

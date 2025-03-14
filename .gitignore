@@ -12,3 +12,5 @@ logs/*
 .backend-venv
 exportfiles/*
 .vscode/*
+data/*
+.dbt/

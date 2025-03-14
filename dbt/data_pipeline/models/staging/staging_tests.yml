@@ -1,0 +1,187 @@
+version: 2
+
+models:
+      - name: num_stage
+        description: "Numeric XBRL facts from SEC filings"
+        columns:
+          - name: adsh
+            description: "SEC Accession Number"
+            tests:
+              - not_null
+          - name: tag
+            description: "XBRL Tag Identifier"
+            tests:
+              - not_null
+          - name: version
+            description: "Tag Taxonomy Version"
+            tests:
+              - not_null
+          - name: ddate
+            description: "Data End Date"
+            tests:
+              - not_null
+          - name: qtrs
+            description: "Number of Quarters Represented"
+            tests:
+              - not_null
+          - name: uom
+            description: "Unit of Measure"
+            tests:
+              - not_null
+
+      - name: tag_stage
+        description: "XBRL taxonomy tags used in SEC filings"
+        columns:
+          - name: tag
+            description: "XBRL Tag Identifier"
+            tests:
+              - not_null
+          - name: version
+            description: "Taxonomy version or accession number where tag was defined"
+            tests:
+              - not_null
+          - name: custom
+            description: "Indicates whether the tag is custom (1 = Yes, 0 = No)"
+            tests:
+              - not_null
+          - name: abstract
+            description: "Indicates whether the tag is abstract (1 = Yes, 0 = No)"
+            tests:
+              - not_null
+          - name: iord
+            description: "Order of the tag in the taxonomy"
+            tests:
+              - not_null
+          - name: datatype
+            description: "Data type of the tag"
+            tests:
+              - accepted_values:
+                  values: ['monetary', 'shares', 'perShare', 'pure', 'percent', 'integer', 'decimal', 'energy', 'volume', 'perUnit', 'mass']
+        
+      - name: pre_stage
+        description: "Presentation data for SEC financial statements"
+        columns:
+          - name: adsh
+            description: "SEC Accession Number"
+            tests:
+              - not_null
+          - name: report
+            description: "Report grouping number"
+            tests:
+              - not_null
+          - name: line
+            description: "Line order in the report"
+            tests:
+              - not_null
+          - name: stmt
+            description: "Financial statement type (BS, IS, CF, etc.)"
+            tests:
+              - not_null:
+                  severity: warn
+              - accepted_values:
+                  values: ['BS', 'IS', 'CF', 'EQ', 'CI', 'SI', 'UN']
+          - name: inpth
+            description: "Indicates whether the line is a header (1 = Yes, 0 = No)"
+            tests:
+              - not_null
+          - name: rfile
+            description: "Report file type (e.g., 10-K, 10-Q)"
+            tests:
+              - not_null
+          - name: tag
+            description: "XBRL Tag"
+            tests:
+              - not_null
+          - name: version
+            description: "XBRL Tag Version"
+            tests:
+              - not_null
+          - name: plabel
+            description: "Preferred label for the line item"
+            tests:
+              - not_null:
+                  severity: warn
+
+
+      - name: sub_stage
+        description: "SEC submission metadata for financial statements"
+        columns:
+          - name: adsh
+            description: "SEC Accession Number"
+            tests:
+              - not_null
+              - unique
+              - relationships:
+                  to: ref('num_stage')
+                  field: adsh
+          - name: cik
+            description: "Central Index Key for company"
+            tests:
+              - not_null
+          - name: name
+            description: "Company legal name"
+            tests:
+              - not_null
+          - name: countryba
+            description: "Country of Business"
+            tests:
+              - not_null
+          - name: cityba
+            description: "City of Business"
+            tests:
+              - not_null
+          - name: countryinc
+            description: "Country of Incorporation"
+            tests:
+              - not_null
+          - name: wksi
+            description: "WKS identifier for company"
+            tests:
+              - not_null
+          - name: fye
+            description: "Fiscal Year End Date"
+            tests:
+              - not_null
+          - name: form
+            description: "SEC form type (e.g., 10-K, 10-Q)"
+            tests:
+              - not_null
+          - name: period
+            description: "Balance Sheet Date"
+            tests:
+              - not_null
+          - name: fy
+            description: "Fiscal Year"
+            tests:
+              - not_null
+          - name: fp
+            description: "Fiscal Period (Q1, Q2, Q3, Q4, FY)"
+            tests:
+              - not_null
+              - accepted_values:
+                  values: ['FY', 'Q1', 'Q2', 'Q3', 'Q4']
+          - name: filed
+            description: "Date the filing was submitted to SEC"
+            tests:
+              - not_null
+          - name: accepted
+            description: "Date and time the filing was accepted by SEC"
+            tests:
+              - not_null
+          - name: prevrpt
+            description: "Indicates whether the report is a previous filing (1 = Yes, 0 = No)"
+            tests:
+              - not_null
+          - name: detail
+            description: "Indicates whether the filing is a detailed filing (1 = Yes, 0 = No)"
+            tests:
+              - not_null
+          - name: instance
+            description: "Indicates whether the filing is an instance filing (1 = Yes, 0 = No)"
+            tests:
+              - not_null
+          - name: nciks
+            description: "Number of Central Index Keys for the company"
+            tests:
+              - not_null
+

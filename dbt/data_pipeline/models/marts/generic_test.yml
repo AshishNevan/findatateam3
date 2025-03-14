@@ -1,0 +1,36 @@
+models:
+  - name: balance_sheet
+    columns:
+      - name: adsh
+        tests:
+          - unique:
+              severity: warn
+          - not_null
+          - relationships:
+              to: ref('sub_stage')
+              field: adsh
+              severity: warn
+
+  - name: income_statement
+    columns:
+      - name: adsh
+        tests:
+          - unique:
+              severity: warn
+          - not_null
+          - relationships:
+              to: ref('sub_stage')
+              field: adsh
+              severity: warn
+
+  - name: cash_flow
+    columns:
+      - name: adsh
+        tests:
+          - unique:
+              severity: warn
+          - not_null
+          - relationships:
+              to: ref('sub_stage')
+              field: adsh
+              severity: warn

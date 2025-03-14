@@ -5,3 +5,12 @@ dbt-core==1.9.2
 dbt-snowflake==1.9.1
 pandas
 apache-airflow-providers-http
+airflow-dbt==0.1.0
+Requests==2.32.3
+urllib3==2.3.0
+streamlit==1.42.0
+pandas==2.2.3
+plotly-express==0.4.1
+fastapi
+python-dotenv==1.0.1
+pyarrow==18.1.0

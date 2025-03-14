@@ -1,0 +1,13 @@
+data_pipeline:
+  target: dev
+  outputs:
+    dev:
+      type: snowflake
+      account: snowflake_account_id
+      user: username
+      password: password
+      role: role_name
+      database: database_name
+      warehouse: warehouse_name
+      schema: schema_name
+      threads: 4
