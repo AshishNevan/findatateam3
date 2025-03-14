@@ -1,4 +1,4 @@
-# FinData Team 3 - SEC Financial Data Pipeline
+# Fin-Fusion Team 3 - SEC Financial Data Pipeline
 
 ## Project Summary
 
@@ -6,7 +6,7 @@ The FinData SEC Financial Data Pipeline is a comprehensive data engineering solu
 
 ## Project Scope
 
-- Automated extraction of financial data from SEC EDGAR database
+- Automated scraping of financial statement data from SEC website for any year and quarter
 - Transformation of raw JSON financial reports into structured, queryable data
 - Data quality validation and error handling
 - Storage in Snowflake data warehouse for analytical processing
