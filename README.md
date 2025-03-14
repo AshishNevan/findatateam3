@@ -21,6 +21,7 @@ Detailed guide available at [**codelabs**](https://codelabs-preview.appspot.com/
 
 ### Project Structure
 ```
+findatateam3
 ├── .env.example
 ├── .gitignore
 ├── AiUseDisclosure.md
