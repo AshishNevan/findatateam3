@@ -285,20 +285,5 @@ services:
       airflow-init:
         condition: service_completed_successfully
 
-  fast-api:
-    build:
-      context: ./backend
-      dockerfile: Dockerfile
-    ports:
-      - "7860:7860"
-    depends_on:
-      - redis
-      - airflow-webserver
-    volumes:
-      - ./backend:/app
-    environment:
-      - REDIS_HOST=redis
-      - AIRFLOW_HOST=airflow-webserver
-
 volumes:
   postgres-db-volume:
