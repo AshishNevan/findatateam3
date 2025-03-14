@@ -23,9 +23,6 @@ logging.basicConfig(level=logging.INFO)
 
 app = FastAPI(title="FastAPI Backend", version="0.1.0")
 
-class QueryRequest(BaseModel):
-    sql: str
-
 SNOWFLAKE_URL = (
     "snowflake://{user}:{password}@{account}/{db}/{schema}?{wh}={wh}&role={role}"
 ).format(
@@ -61,10 +58,9 @@ class Dags(Enum):
 
 tasks: Dict[uuid.UUID, task] = {}
 
-print(os.getenv("AIRFLOW_PUBLIC_IP"))
 
 AIRFLOW_URL = "http://{airflow_host}/api/v1".format(
-    airflow_host=os.getenv("AIRFLOW_PUBLIC_IP", "127.0.0.1:8080")
+    airflow_host=os.getenv("AIRFLOW_URL", "127.0.0.1:8080")
 )
 
 engine = create_engine(SNOWFLAKE_URL)
