@@ -16,6 +16,9 @@ Detailed guide available at [**codelabs**](https://codelabs-preview.appspot.com/
 - Orchestrated workflow management with Apache Airflow
 - RESTful API access to processed financial data
 
+## Architecture
+<img src="images/assignment2.png" width=800px>
+
 ## Deployed Services
 
 - **Streamlit Dashboard**: [https://findatateam3-ylcxtmn2ragdbygsq5ezgp.streamlit.app](https://findatateam3-ylcxtmn2ragdbygsq5ezgp.streamlit.app)
