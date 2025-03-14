@@ -148,12 +148,8 @@ Trigger the DAG from the Airflow UI
 
 ## Project Workflow
 
-1. **Branch Task**: Checks if data for the specified year and quarter already exists
-2. **Download Task**: Initiates the download of SEC JSON data
-3. **Check Download Task**: Monitors the download process until completion
-4. **Transform Task**: Processes the raw JSON data into a structured format
-5. **Check Transform Task**: Monitors the transformation process
-6. **Load Task**: Loads the transformed data into Snowflake
+1. **Programmatic access**: Use the deployed API service to invoke the DAG, data will be uploaded to snowflake.
+2. **Web app**: Visualize financial statement data on the deployed streamlit web application.
 
 ## Stopping the Services
 
