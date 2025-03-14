@@ -188,33 +188,6 @@ services:
     volumes:
       - ./sources:/sources
 
-  dbt:
-    image: ghcr.io/dbt-labs/dbt-snowflake:latest
-    container_name: dbt-container
-    volumes:
-      - ./dbt:/usr/app # Mount DBT project
-    working_dir: /usr/app
-    command: ["sleep", "infinity"] # Keeps DBT container running
-    environment:
-      DBT_PROFILES_DIR: "/usr/app"
-      DBT_SNOWFLAKE_ACCOUNT: "<your_snowflake_account>"
-      DBT_SNOWFLAKE_USER: "<your_snowflake_user>"
-      DBT_SNOWFLAKE_PASSWORD: "<your_snowflake_password>"
-      DBT_SNOWFLAKE_ROLE: "<your_snowflake_role>"
-      DBT_SNOWFLAKE_WAREHOUSE: "<your_snowflake_warehouse>"
-      DBT_SNOWFLAKE_DATABASE: "<your_snowflake_database>"
-      DBT_SNOWFLAKE_SCHEMA: "<your_snowflake_schema>"
-      DBT_SNOWFLAKE_THREADS: "4"
-      CONNECTION_CHECK_MAX_COUNT: "0"
-    # depends_on:
-    #   - airflow-webserver
-    #   <<: *airflow-common-env
-    # Workaround for entrypoint issue. See: https://github.com/apache/airflow/issues/16252
-    # command:
-    #     - bash
-    #     - -c
-    #     - airflow
-
   # You can enable flower by adding "--profile flower" option e.g. docker-compose --profile flower up
   # or by explicitly targeted on the command line e.g. docker-compose up flower.
   # See: https://docs.docker.com/compose/profiles/
