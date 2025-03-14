@@ -23,11 +23,6 @@ logging.basicConfig(level=logging.INFO)
 
 app = FastAPI(title="FastAPI Backend", version="0.1.0")
 
-
-class QueryRequest(BaseModel):
-    sql: str
-
-
 SNOWFLAKE_URL = (
     "snowflake://{user}:{password}@{account}/{db}/{schema}?{wh}={wh}&role={role}"
 ).format(
