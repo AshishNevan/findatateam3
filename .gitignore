@@ -9,4 +9,6 @@ dbt_packages/
 logs/*
 /backend/data
 /backend/exportfiles
-.backend_venv/*
+.backend-venv
+exportfiles/*
+.vscode/*
