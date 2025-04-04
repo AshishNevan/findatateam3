@@ -1,4 +1,4 @@
-# Fin-Fusion Team 3 - SEC Financial Data Pipeline
+# Fin-Fusion Team 2 (Previously Team 3) - SEC Financial Data Pipeline
 
 ## Project Summary
 
